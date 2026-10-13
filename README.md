@@ -79,11 +79,10 @@ On x86_64 Linux with Nix (including NixOS), enter the development shell:
 nix develop
 ```
 
-The shell provides Python, Ninja, and the Linux runtime libraries needed by the
-downloaded build tools, including 32-bit support for wibo. It uses an FHS
-environment so those tools can run on NixOS without patching them. Run the
-[building commands](#building) inside this shell. The first build needs network
-access to download the tools; your game files stay in the ignored `orig/` directory.
+The shell provides Python and Ninja. Run the [building commands](#building) inside
+this shell. The build downloads the pinned compilers and other tools automatically,
+so the first build needs network access. Your game files stay in the ignored
+`orig/` directory.
 The flake provides a development shell only and does not package the game.
 
 Without Nix:
