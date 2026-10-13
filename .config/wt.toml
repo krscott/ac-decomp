@@ -1,0 +1,11 @@
+# Submodule setup is already handled by the global pre-start hook.
+# [pre-start]
+# submodules = "git submodule update --recursive --init --jobs=16"
+
+[pre-start]
+copy-orig = '''
+source={{ primary_worktree_path }}/orig
+if [ -d "$source" ] && ! [ "$source" -ef orig ]; then
+    mkdir -p orig && cp -a --no-clobber -- "$source/." orig/
+fi
+'''
