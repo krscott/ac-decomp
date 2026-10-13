@@ -73,6 +73,21 @@ sudo xattr -rd com.apple.quarantine '/Applications/Wine Crossover.app'
 Linux
 ------
 
+On x86_64 Linux with Nix (including NixOS), enter the development shell:
+
+```sh
+nix develop
+```
+
+The shell provides Python, Ninja, and the Linux runtime libraries needed by the
+downloaded build tools, including 32-bit support for wibo. It uses an FHS
+environment so those tools can run on NixOS without patching them. Run the
+[building commands](#building) inside this shell. The first build needs network
+access to download the tools; your game files stay in the ignored `orig/` directory.
+The flake provides a development shell only and does not package the game.
+
+Without Nix:
+
 - Install [ninja](https://github.com/ninja-build/ninja/wiki/Pre-built-Ninja-packages).
 - For non-x86(_64) platforms: Install wine from your package manager.
   - For x86(_64), [wibo](https://github.com/decompals/wibo), a minimal 32-bit Windows binary wrapper, will be automatically downloaded and used.
